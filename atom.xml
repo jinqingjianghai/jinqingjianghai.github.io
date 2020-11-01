@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>尽倾江海里，赠饮天下人</title>
+  <title>尽倾江海的博客</title>
   
   
   <link href="https://jinqingjianghai.github.io/atom.xml" rel="self"/>
   
   <link href="https://jinqingjianghai.github.io/"/>
-  <updated>2020-10-31T11:44:33.681Z</updated>
+  <updated>2020-11-01T14:44:34.666Z</updated>
   <id>https://jinqingjianghai.github.io/</id>
   
   <author>
-    <name>尽倾江海</name>
+    <name>jinqingjianghai</name>
     
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://jinqingjianghai.github.io/2020/10/31/hello-world/"/>
-    <id>https://jinqingjianghai.github.io/2020/10/31/hello-world/</id>
-    <published>2020-10-31T11:44:33.665Z</published>
-    <updated>2020-10-31T11:44:33.681Z</updated>
+    <title>Python输入逗号隔开的数据</title>
+    <link href="https://jinqingjianghai.github.io/2020/11/01/Python%E8%BE%93%E5%85%A5%E9%80%97%E5%8F%B7%E9%9A%94%E5%BC%80%E7%9A%84%E6%95%B0%E6%8D%AE/"/>
+    <id>https://jinqingjianghai.github.io/2020/11/01/Python%E8%BE%93%E5%85%A5%E9%80%97%E5%8F%B7%E9%9A%94%E5%BC%80%E7%9A%84%E6%95%B0%E6%8D%AE/</id>
+    <published>2020-11-01T09:11:47.000Z</published>
+    <updated>2020-11-01T14:44:34.666Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>这里分享两种操作： <strong>a,b,……,z=eval(input())</strong> 和 <strong>s=input().split(“,”)</strong> ，但的第一种只适用于已知数据个数的情况下。以下是相应练习题及代码。    </p><h2 id="输入已知个数的数据"><a href="#输入已知个数的数据" class="headerlink" title="输入已知个数的数据"></a>输入已知个数的数据</h2><p><strong>a,b,……,z=eval(input())</strong></p><ul><li>eg.计算(a^b)%c    <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a,b,c=<span class="built_in">eval</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="comment">#x=pow(a,b)%c可能会超时</span></span><br><span class="line">x=<span class="built_in">pow</span>(a,b,c)</span><br><span class="line">print(x)  </span><br></pre></td></tr></table></figure></li></ul><a id="more"></a>    <hr><ul><li>eg.判断某年某月有几天（输入两个逗号隔开的数据）  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a,b=<span class="built_in">eval</span>(<span class="built_in">input</span>())</span><br><span class="line">c=<span class="number">30</span>  </span><br><span class="line"><span class="keyword">if</span> b==<span class="number">2</span>:  </span><br><span class="line">    <span class="keyword">if</span> ((a%<span class="number">4</span>==<span class="number">0</span>)<span class="keyword">and</span>(a%<span class="number">100</span>!=<span class="number">0</span>)) <span class="keyword">or</span> (a%<span class="number">400</span>==<span class="number">0</span>):  </span><br><span class="line">        c=<span class="number">29</span>  </span><br><span class="line">    <span class="keyword">else</span>:  </span><br><span class="line">        c=<span class="number">28</span>  </span><br><span class="line"><span class="comment">#&quot;if (b==1)or(b==3)or(b==5)or(b==7)or(b==8)or  (b==10)or(b==12): &quot; 太过繁琐，改进为：</span></span><br><span class="line">d=(<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">10</span>,<span class="number">12</span>)</span><br><span class="line"><span class="keyword">if</span> b <span class="keyword">in</span> d:</span><br><span class="line">    c=<span class="number">31</span>  </span><br><span class="line">print(<span class="string">&quot;&#123;&#125;年&#123;&#125;月有&#123;&#125;天&quot;</span>.<span class="built_in">format</span>(a,b,c))  </span><br></pre></td></tr></table></figure></li></ul><hr><h2 id="输入未知个数的数据"><a href="#输入未知个数的数据" class="headerlink" title="输入未知个数的数据"></a>输入未知个数的数据</h2><p><strong>s=input().split(“,”)</strong> 返回一个列表    </p><ul><li>eg.输入若干个数字，以逗号隔开，输出最大值    <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">str1=<span class="built_in">input</span>()</span><br><span class="line">s=str1.split(<span class="string">&quot;,&quot;</span>)</span><br><span class="line"><span class="built_in">max</span>=<span class="built_in">int</span>(s[<span class="number">0</span>])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(s)):</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">int</span>(s[i])&gt;<span class="built_in">max</span>:</span><br><span class="line">        <span class="built_in">max</span>=<span class="built_in">int</span>(s[i])</span><br><span class="line">print(<span class="string">&quot;最大值为：&quot;</span>+<span class="built_in">str</span>(<span class="built_in">max</span>))</span><br></pre></td></tr></table></figure></li></ul>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
+    <summary type="html">&lt;p&gt;这里分享两种操作： &lt;strong&gt;a,b,……,z=eval(input())&lt;/strong&gt; 和 &lt;strong&gt;s=input().split(“,”)&lt;/strong&gt; ，但的第一种只适用于已知数据个数的情况下。以下是相应练习题及代码。    &lt;/p&gt;
+&lt;h2 id=&quot;输入已知个数的数据&quot;&gt;&lt;a href=&quot;#输入已知个数的数据&quot; class=&quot;headerlink&quot; title=&quot;输入已知个数的数据&quot;&gt;&lt;/a&gt;输入已知个数的数据&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;a,b,……,z=eval(input())&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;eg.计算(a^b)%c    &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;a,b,c=&lt;span class=&quot;built_in&quot;&gt;eval&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;input&lt;/span&gt;())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#x=pow(a,b)%c可能会超时&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;x=&lt;span class=&quot;built_in&quot;&gt;pow&lt;/span&gt;(a,b,c)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;print(x)  &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
     
     
     
