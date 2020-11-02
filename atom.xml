@@ -6,7 +6,7 @@
   <link href="https://jinqingjianghai.github.io/atom.xml" rel="self"/>
   
   <link href="https://jinqingjianghai.github.io/"/>
-  <updated>2020-11-01T14:44:34.666Z</updated>
+  <updated>2020-11-02T03:40:39.556Z</updated>
   <id>https://jinqingjianghai.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C++中不能用cout输出string类型变量的解决方案</title>
+    <link href="https://jinqingjianghai.github.io/2020/11/02/C-%E4%B8%AD%E4%B8%8D%E8%83%BD%E7%94%A8cout%E8%BE%93%E5%87%BAstring%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>https://jinqingjianghai.github.io/2020/11/02/C-%E4%B8%AD%E4%B8%8D%E8%83%BD%E7%94%A8cout%E8%BE%93%E5%87%BAstring%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
+    <published>2020-11-02T02:05:29.000Z</published>
+    <updated>2020-11-02T03:40:39.556Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="no-operator-lt-lt-matches-these-operands"><a href="#no-operator-lt-lt-matches-these-operands" class="headerlink" title="no operator &lt;&lt; matches these operands"></a><strong>no operator &lt;&lt; matches these operands</strong></h1><p>初学c++时，用cout输出一个string类型字符串，出现报错： <strong>no operator &lt;&lt; matches these operands</strong> ，所以我以后用到string类型输出，先将string转为char*。但参考了广大网友的智慧，实际上cout重载了string类型，在c++中可以直接输出。   </p><a id="more"></a><h2 id="先来看CString、string和string-h这几个区别："><a href="#先来看CString、string和string-h这几个区别：" class="headerlink" title="先来看CString、string和string.h这几个区别："></a>先来看CString、string和string.h这几个区别：</h2><ul><li><p>CSting:CString是MFC或者ATL中的实现，是MFC里面封装的一个关于字符串处理的功能很强大的类,只有支持MFC的工程才可以使用。如在linux上的工程就不能用CString了，只能用标准C++中的string类了。在MFC中使用不需要自己加，但在另外的程序中需要加入#include<CString>。   </p></li><li><p>string：string类既是一个标准c++的类库，同时也是STL（Standard Template Library,标准模版库）中的类库，已经纳入C++标准之中。它和CString有本质的区别。   </p></li><li><p>string.h:C语言里面关于字符数组的函数定义的头文件，常用函数有strlen、strcmp、strcpy等等，这个头文件跟C++的string类半点关系也没有，所以 <string>并非 &lt;string.h&gt;的“升级版本”，他们是毫无关系的两个头文件。</p></li></ul><p><strong>综上，cout函数重载的是string类库中的string类型，而不是CString或string.h中的。</strong>   </p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="number">2</span> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;CString&gt;</span></span></span><br><span class="line"> <span class="number">3</span> <span class="comment">//#include&lt;string.h&gt;</span></span><br><span class="line"> <span class="number">4</span> </span><br><span class="line"> <span class="number">5</span> <span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cout</span>;</span><br><span class="line"> <span class="number">6</span> <span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">string</span> ;</span><br><span class="line"> <span class="number">7</span> <span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"> <span class="number">8</span> </span><br><span class="line"> <span class="number">9</span> main()</span><br><span class="line"><span class="number">10</span> &#123;</span><br><span class="line"><span class="number">11</span>     <span class="built_in">string</span> a;</span><br><span class="line"><span class="number">13</span>     a=<span class="string">&quot;*******&quot;</span>;</span><br><span class="line"><span class="number">15</span>     <span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="number">16</span> &#125;</span><br></pre></td></tr></table></figure><p>当编译这个程序时，会出现这样的如上的error，而如果把上面的头文件改为#include<string>时，error就会消失。而在MFC中或你包含的是CString头文件，如果想用cout输出string 类型，则需要先把string类型转换char*型：   </p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span>* b=(<span class="keyword">char</span>*)a.c_str(); <span class="comment">//将string类型转为char*</span></span><br></pre></td></tr></table></figure><p><a href="https://www.cnblogs.com/mzct123/p/4876185.html">参考链接</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;no-operator-lt-lt-matches-these-operands&quot;&gt;&lt;a href=&quot;#no-operator-lt-lt-matches-these-operands&quot; class=&quot;headerlink&quot; title=&quot;no operator &amp;lt;&amp;lt; matches these operands&quot;&gt;&lt;/a&gt;&lt;strong&gt;no operator &amp;lt;&amp;lt; matches these operands&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;初学c++时，用cout输出一个string类型字符串，出现报错： &lt;strong&gt;no operator &amp;lt;&amp;lt; matches these operands&lt;/strong&gt; ，所以我以后用到string类型输出，先将string转为char*。但参考了广大网友的智慧，实际上cout重载了string类型，在c++中可以直接输出。   &lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Python输入逗号隔开的数据</title>
